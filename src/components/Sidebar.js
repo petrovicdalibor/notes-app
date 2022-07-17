@@ -18,7 +18,13 @@ export default class Sidebar extends Component {
   tl = gsap.timeline();
 
   animate = () => {
+    const otherDivs = this.selectorsRef.current
+      ? [...this.selectorsRef.current.querySelectorAll(":scope > .other")]
+      : [];
+
     console.log(this.state.addStatus);
+    console.log(otherDivs.length);
+    // console.log(this.otherDivs.length);
     if (this.state.addStatus === true) {
       gsap.to(this.addBtn.current, {
         rotate: "0",
@@ -46,16 +52,8 @@ export default class Sidebar extends Component {
         delay: 0.3,
       });
 
-      const otherDivs = this.selectorsRef.current
-        ? [...this.selectorsRef.current.querySelectorAll(":scope > .other")]
-        : [];
-
-      // let del = 1;
-
       otherDivs.forEach((element) => {
         const classes = element.getAttribute("class").match(/\S+/gi);
-
-        // console.log(element.getAttribute("data-to"));
 
         gsap.to(
           `.note-selectors .${classes[1]}`,
@@ -63,7 +61,6 @@ export default class Sidebar extends Component {
             scaleY: 1,
             translateY: element.getAttribute("data-to"),
             ease: "Power2.easeInOut",
-            // delay: 0.4,
             stagger: 0.24,
             duration: 0.5,
             opacity: 1,
@@ -81,6 +78,23 @@ export default class Sidebar extends Component {
         translateY: 0,
         scaleY: 1.8,
         ease: "Power2.easeInOut",
+      });
+
+      otherDivs.forEach((element) => {
+        const classes = element.getAttribute("class").match(/\S+/gi);
+
+        gsap.to(
+          `.note-selectors .${classes[1]}`,
+          {
+            scaleY: 1.8,
+            translateY: 0,
+            ease: "Power2.easeInOut",
+            stagger: 0.24,
+            duration: 0.5,
+            opacity: 1,
+          },
+          "-=.26"
+        );
       });
     }
     this.setState({ addStatus: !this.state.addStatus });
