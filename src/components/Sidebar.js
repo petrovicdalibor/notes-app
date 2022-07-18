@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../assets/styles/sidebar.scss";
-import plus from "../assets/images/plus.svg";
+import PlusIcon from "../assets/images/plus.svg";
 
 import { gsap } from "gsap";
 
@@ -90,7 +90,7 @@ export default class Sidebar extends Component {
             translateY: 0,
             ease: "Power2.easeInOut",
             stagger: 0.24,
-            duration: 0.5,
+            duration: 0.4,
             opacity: 1,
           },
           "-=.26"
@@ -109,31 +109,15 @@ export default class Sidebar extends Component {
         <div className="notes-container">
           <div className="add-button">
             <button id="addNote" ref={this.addBtn} onClick={this.animate}>
-              <img src={plus} alt="Plus Icon"></img>
+              <img src={PlusIcon} alt="Plus Icon"></img>
             </button>
           </div>
           <div ref={this.selectorsRef} className="note-selectors">
             <div className="selector first" ref={this.first}></div>
-            <div
-              className="selector second other"
-              data-from="100"
-              data-to="140"
-            ></div>
-            <div
-              className="selector third other"
-              data-from="160"
-              data-to="200"
-            ></div>
-            <div
-              className="selector fourth other"
-              data-from="220"
-              data-to="260"
-            ></div>
-            <div
-              className="selector fifth other"
-              data-from="280"
-              data-to="320"
-            ></div>
+            <div className="selector second other" data-to="140"></div>
+            <div className="selector third other" data-to="200"></div>
+            <div className="selector fourth other" data-to="260"></div>
+            <div className="selector fifth other" data-to="320"></div>
           </div>
         </div>
       </div>

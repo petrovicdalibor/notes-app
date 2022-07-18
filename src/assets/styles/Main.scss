@@ -1,0 +1,15 @@
+.main {
+  grid-area: main;
+  .header {
+    h2 {
+      font-size: 52px;
+      margin-top: 42px;
+    }
+  }
+
+  .notes {
+    display: flex;
+    margin-top: 0px;
+    padding: 0 45px;
+  }
+}
